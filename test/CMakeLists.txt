@@ -8,6 +8,6 @@ itkRecursiveGaussianInPlacePerformanceTest.cxx
 CreateTestDriver(ITK-ScaleSpace  "${ITK-ScaleSpace-Test_LIBRARIES}" "${ITK-ScaleSpaceTests}")
 
 itk_add_test( NAME itkLaplacianBlobDetectorTest
-  COMMAND ITK_ScaleSpaceDriver itkMultiScaleLaplacianBlobDetectorImageFilterTest )
+  COMMAND ITK-ScaleSpaceTestDriver itkMultiScaleLaplacianBlobDetectorImageFilterTest )
 itk_add_test( NAME itkRecursiveGaussianInPlacePerformanceTest
-  COMMAND ITK_ScaleSpaceDriver itkRecursiveGaussianInPlacePerformanceTest )
+  COMMAND ITK-ScaleSpaceTestDriver itkRecursiveGaussianInPlacePerformanceTest )
