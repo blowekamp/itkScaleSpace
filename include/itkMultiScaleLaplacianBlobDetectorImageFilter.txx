@@ -37,8 +37,7 @@
 
 namespace itk
 {
-namespace Local
-{
+
 
 template < class TInputImage >
 MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
@@ -334,7 +333,6 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
 
 }
 
-}
 }
 
 #endif // __itkMultiScaleLaplacianBlobDetectorImageFilter_txx

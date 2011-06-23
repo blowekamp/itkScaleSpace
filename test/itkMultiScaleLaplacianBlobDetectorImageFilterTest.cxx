@@ -1,4 +1,4 @@
-#include "itkLocal/itkMultiScaleLaplacianBlobDetectorImageFilter.h"
+#include "itkMultiScaleLaplacianBlobDetectorImageFilter.h"
 #include "itkImageRegionIteratorWithIndex.h"
 #include "itkGaussianImageSource.h"
 #include "itkImageFileWriter.h"
@@ -28,10 +28,9 @@ bool MaximaGaussianBlobTest( const double sigma )
   gaussianSource->SetMean( itk::FixedArray< double, IDimension>( imageSize/2 ) );
   gaussianSource->SetSigma( itk::FixedArray< double, IDimension>( sigma ) );
   gaussianSource->SetNormalized( false );
-  gaussianSource->SetScale( -1.0 ); // dark blob
+  gaussianSource->SetScale( -1.0 ); // dark blob 
 
-
-  typedef itk::Local::MultiScaleLaplacianBlobDetectorImageFilter< ImageType > BlobFilterType;
+  typedef itk::MultiScaleLaplacianBlobDetectorImageFilter< ImageType > BlobFilterType;
   typename BlobFilterType::Pointer blobFilter = BlobFilterType::New();
   blobFilter->SetStartT( vcl_pow(sigma, 2.0/4.0) );
   blobFilter->SetEndT( vcl_pow(sigma, 2.0*4.0) );

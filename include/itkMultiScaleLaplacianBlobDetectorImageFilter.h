@@ -31,8 +31,7 @@
 
 namespace itk
 {
-namespace Local
-{
+
 
 template < unsigned int TDimension = 3 >
 class ScaleSpaceBlobSpatialObject
@@ -217,7 +216,6 @@ private:
   double       m_EndT;
 };
 
-}
 }
 
 
