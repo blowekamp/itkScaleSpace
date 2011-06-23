@@ -14,12 +14,12 @@ int itkRecursiveGaussianInPlacePerformanceTest( int argc, char *argv[] )
 
   const unsigned int imageSize = 256;
 
-  typename ImageType::SizeType size;
+  ImageType::SizeType size;
   size.Fill( imageSize );
 
 
   typedef itk::GaussianImageSource<ImageType> GaussianSourceType;
-  typename GaussianSourceType::Pointer gaussianSource = GaussianSourceType::New();
+  GaussianSourceType::Pointer gaussianSource = GaussianSourceType::New();
   gaussianSource->SetSize( size );
   gaussianSource->SetMean( itk::FixedArray< double, Dimension>( imageSize/2 ) );
   gaussianSource->SetSigma( itk::FixedArray< double, Dimension>( imageSize/6 ) );
@@ -70,4 +70,6 @@ int itkRecursiveGaussianInPlacePerformanceTest( int argc, char *argv[] )
 
     std::cout << "Speed Up with InPlace: " << t2.GetTotal()/ (double) t1.GetTotal() << std::endl;
     }
+
+  return EXIT_FAILURE;
 }
