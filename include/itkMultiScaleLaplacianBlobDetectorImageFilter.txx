@@ -225,7 +225,7 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
 
 template < class TInputImage >
 void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
-::ThreadedGenerateData(const OutputImageRegionType &outputRegionForThread, int threadId )
+::ThreadedGenerateData(const OutputImageRegionType &outputRegionForThread, ThreadIdType threadId )
 {
   //unsigned int m_Number = 20;
   //  const unsigned int numberOfScales = m_Number+2;
