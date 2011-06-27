@@ -32,7 +32,12 @@
 namespace itk
 {
 
-
+/** \class ScaleSpaceBlobSpatialObject
+ * \brief a spatial object to represent a gaussian blob with size
+ *
+ * The superclass parameter "Sigma" is the size of the blob if it was
+ * a gaussian.
+ **/
 template < unsigned int TDimension = 3 >
 class ScaleSpaceBlobSpatialObject
   : public GaussianSpatialObject< TDimension>
@@ -52,10 +57,14 @@ public:
   itkNewMacro(Self);
   itkTypeMacro(ScaleSpaceBlobSpatialObject, GaussianSpatialObject);
 
+  /** Set/Get the normalized laplacian value of the extrema */
   itkGetMacro( ScaleSpaceValue, double );
   itkSetMacro( ScaleSpaceValue, double );
 
+  /** The radius of the object if it is a solid hyper-sphere */
   double GetObjectRadius( void ) const { return this->GetSigma() *  vnl_math::sqrt2; }
+
+  /** The sigma of the laplacian where the extrema occoured */
   double GetScaleSpaceSigma( void ) const { return this->GetSigma() / ( vcl_sqrt( TDimension / 2.0 ) ); }
 
 private:
@@ -74,6 +83,8 @@ private:
  * Define a blob.
  *
  * Explain notation of scale space used
+ *
+ * 
  *
  * \sa LaplacianRecursiveGaussianImageFilter
  *
@@ -112,16 +123,25 @@ public:
 
   typedef typename Superclass::OutputImageRegionType OutputImageRegionType;
 
-
+  /** Set/Get the starting value to search scale-space.
+   *
+   * T is equivalent to varinace or sigma squared.
+   **/
   itkSetMacro( StartT, double );
   itkGetMacro( StartT, double );
 
+  /** Set/Get the ending value to search scale-space.
+   */
   itkSetMacro( EndT, double );
   itkGetMacro( EndT, double );
 
+  /** Set/Get the number of steps per doubling of sigma sampled.
+   */
   itkSetMacro( StepsPerOctave, double );
   itkGetMacro( StepsPerOctave, double );
 
+  /** Set/Get the number of blobs to find
+   */
   itkSetMacro( NumberOfBlobs, size_t );
   itkGetMacro( NumberOfBlobs, size_t );
 
