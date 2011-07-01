@@ -62,6 +62,7 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
 
   typedef itk::CastImageFilter<InputImageType, InputImageType> CasterFilterType;
   typename CasterFilterType::Pointer caster = CasterFilterType::New();
+  caster->SetNumberOfThreads( this->GetNumberOfThreads() );
   caster->InPlaceOff();
   caster->SetInput( inputImage );
 
@@ -90,6 +91,7 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
   for (unsigned int i = 0; i < 3; ++i )
     {
     laplacianFilter[i] = LaplacianFilterType::New();
+    laplacianFilter[i]->SetNumberOfThreads( this->GetNumberOfThreads() );
     laplacianFilter[i]->SetInput( inputImage );
     laplacianFilter[i]->SetNormalizeAcrossScale( true );
     progress->RegisterInternalFilter( laplacianFilter[i],   1.0 / numberOfScales );
