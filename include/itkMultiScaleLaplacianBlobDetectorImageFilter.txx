@@ -112,11 +112,9 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
 
     laplacianFilter[2]->Update();
 
-    // wait untill all three laplacian filters have run
+    // wait until all three laplacian filters have run
     if ( i > 1 )
       {
-      unsigned int center = i - 1;
-
       // prepare for threaded execution
       this->m_LaplacianImage[0] = laplacianFilter[0]->GetOutput();
       this->m_LaplacianImage[1] = laplacianFilter[1]->GetOutput();
@@ -146,7 +144,6 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
           continue;
           }
 
-        BlobHeapType &v = m_BlobHeapPerThread[t];
         BlobHeapType temp;
         std::swap(temp, blobs);
         blobs.resize( threadBlobs.size() + temp.size() );
@@ -200,9 +197,7 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
     {
     itkDebugMacro( "Blob detected at " << i->m_Center  << " with value " << i->m_Value << " and sigma: " << i->m_Sigma );
 
-    const double t = vnl_math_sqr( i->m_Sigma );
     const double sigma =  vcl_sqrt( InputImageType::ImageDimension / 2.0 )* i->m_Sigma;
-    const double r = sigma * vnl_math::sqrt2;
 
     BlobPointer blob = BlobType::New();
     blob->SetSigma( sigma );
@@ -254,8 +249,6 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
   typename FaceCalculatorType::FaceListType::iterator fit;
 
   faceList = faceCalculator( laplacianImage, outputRegionForThread, radius );
-
-  const unsigned int numberOfThreads = this->GetNumberOfThreads();
 
 
   Point<double, RealImageType::ImageDimension> zeroPoint;
