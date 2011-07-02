@@ -28,7 +28,7 @@ bool MaximaGaussianBlobTest( const double sigma )
   gaussianSource->SetMean( itk::FixedArray< double, IDimension>( imageSize/2 ) );
   gaussianSource->SetSigma( itk::FixedArray< double, IDimension>( sigma ) );
   gaussianSource->SetNormalized( false );
-  gaussianSource->SetScale( -1.0 ); // dark blob 
+  gaussianSource->SetScale( -1.0 ); // dark blob
 
   typedef itk::MultiScaleLaplacianBlobDetectorImageFilter< ImageType > BlobFilterType;
   typename BlobFilterType::Pointer blobFilter = BlobFilterType::New();

@@ -8,7 +8,7 @@
 int itkRecursiveGaussianInPlacePerformanceTest( int argc, char *argv[] )
 {
   typedef float PixelType;
-  const unsigned int Dimension = 4;
+  const unsigned int Dimension = 3;
   typedef itk::Image< PixelType, Dimension > ImageType;
 
 
