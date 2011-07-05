@@ -26,50 +26,56 @@ int itkRecursiveGaussianInPlacePerformanceTest( int argc, char *argv[] )
   gaussianSource->SetNormalized( false );
   gaussianSource->SetScale( 1.0 );
 
+
+
   for (unsigned int d = 0; d < Dimension; ++d )
     {
     itk::TimeProbe t1;
     itk::TimeProbe t2;
-    {
-    gaussianSource->Update();
+    std::cout << "--- In Dimension " << d << " ---" << std::endl;
+    for ( unsigned int i = 0; i < 10; ++i )
+      {
+      {
+      gaussianSource->Update();
 
-    typedef itk::RecursiveGaussianImageFilter< ImageType, ImageType> GaussianFilterType;
-    GaussianFilterType::Pointer filter = GaussianFilterType::New();
-    filter->SetInput( gaussianSource->GetOutput() );
-    filter->SetOrder( GaussianFilterType::ZeroOrder );
-    filter->SetSigma( 5.0 ); // this filter run-time performance in
-    filter->SetDirection( d );
-    // independed of scale
-    filter->InPlaceOn();
+      typedef itk::RecursiveGaussianImageFilter< ImageType, ImageType> GaussianFilterType;
+      GaussianFilterType::Pointer filter = GaussianFilterType::New();
+      filter->SetInput( gaussianSource->GetOutput() );
+      filter->SetOrder( GaussianFilterType::ZeroOrder );
+      filter->SetDirection( d );
+      filter->SetSigma( 5.0 ); // this filter run-time performance in
+      // independed of scale
+      //filter->InPlaceOn();
 
-    t1.Start();
-    filter->Update();
-    t1.Stop();
+      t2.Start();
+      filter->Update();
+      t2.Stop();
 
-    std::cout << "InPlace: " << t1.GetTotal() << t1.GetUnit() << std::endl;
-    }
+      }
 
-    {
-    gaussianSource->Update();
+      {
+      gaussianSource->Update();
 
-    typedef itk::RecursiveGaussianImageFilter< ImageType, ImageType> GaussianFilterType;
-    GaussianFilterType::Pointer filter = GaussianFilterType::New();
-    filter->SetInput( gaussianSource->GetOutput() );
-    filter->SetOrder( GaussianFilterType::ZeroOrder );
-    filter->SetDirection( d );
-    filter->SetSigma( 5.0 ); // this filter run-time performance in
-    // independed of scale
-//  filter->InPlaceOn();
+      typedef itk::RecursiveGaussianImageFilter< ImageType, ImageType> GaussianFilterType;
+      GaussianFilterType::Pointer filter = GaussianFilterType::New();
+      filter->SetInput( gaussianSource->GetOutput() );
+      filter->SetOrder( GaussianFilterType::ZeroOrder );
+      filter->SetSigma( 5.0 ); // this filter run-time performance in
+      filter->SetDirection( d );
+      // independed of scale
+      filter->InPlaceOn();
 
-    t2.Start();
-    filter->Update();
-    t2.Stop();
+      t1.Start();
+      filter->Update();
+      t1.Stop();
 
-    std::cout << "Copy: " << t2.GetTotal() << t2.GetUnit() << std::endl;
-    }
+      }
 
-    std::cout << "Speed Up with InPlace: " << t2.GetTotal()/ (double) t1.GetTotal() << std::endl;
-    }
-
-  return EXIT_FAILURE;
+      }
+      std::cout << "\tInPlace: " << t1.GetMean() << t1.GetUnit() << std::endl;
+      std::cout << "\tCopy: " << t2.GetMean() << t2.GetUnit() << std::endl;
+      std::cout << "\tSpeed Up with InPlace: " << t2.GetMean()/ (double) t1.GetMean() << std::endl;
+      }
+ 
+  return EXIT_SUCCESS;
 }

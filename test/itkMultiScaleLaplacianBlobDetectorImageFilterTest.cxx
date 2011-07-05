@@ -11,7 +11,7 @@ bool MaximaGaussianBlobTest( const double sigma )
 {
   const unsigned int imageSize = 64;
 
-  typedef itk::Image< double, IDimension > ImageType;
+  typedef itk::Image< float, IDimension > ImageType;
 
   typename ImageType::SizeType size;
   size.Fill( imageSize );
@@ -34,7 +34,7 @@ bool MaximaGaussianBlobTest( const double sigma )
   typename BlobFilterType::Pointer blobFilter = BlobFilterType::New();
   blobFilter->SetStartT( vcl_pow(sigma, 2.0/4.0) );
   blobFilter->SetEndT( vcl_pow(sigma, 2.0*4.0) );
-  blobFilter->SetStepsPerOctave( 40 );
+  blobFilter->SetStepsPerOctave( 10 );
   blobFilter->SetNumberOfBlobs( 5 );
   blobFilter->SetInput( gaussianSource->GetOutput() );
   blobFilter->Update();
