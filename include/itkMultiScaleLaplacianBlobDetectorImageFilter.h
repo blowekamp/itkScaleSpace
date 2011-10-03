@@ -241,7 +241,7 @@ private:
 
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itkMultiScaleLaplacianBlobDetectorImageFilter.txx"
+#include "itkMultiScaleLaplacianBlobDetectorImageFilter.hxx"
 #endif
 
 
