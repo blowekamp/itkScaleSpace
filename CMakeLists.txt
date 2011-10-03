@@ -1,2 +1,2 @@
-project(ITK-ExternalScaleSpace)
+project(ITKExternalScaleSpace)
 itk_module_impl()

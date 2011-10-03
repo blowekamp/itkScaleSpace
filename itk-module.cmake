@@ -1,1 +1,1 @@
-itk_module(ITK-ImageScaleSpace DEPENDS ITK-SpatialObjects ITK-ImageFeature TEST_DEPENDS ITK-TestKernel)
+itk_module(ITKImageScaleSpace DEPENDS ITKSpatialObjects ITKImageFeature TEST_DEPENDS ITKTestKernel)
