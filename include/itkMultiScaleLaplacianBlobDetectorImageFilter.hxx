@@ -147,7 +147,7 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
           }
 
         BlobHeapType temp;
-        std::swap(temp, blobs);
+        swap(temp, blobs);
         blobs.resize( threadBlobs.size() + temp.size() );
 
         std::merge( temp.begin(), temp.end(),
@@ -172,8 +172,8 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
       }
 
     // circularly rotate laplacian filters down in scale
-    std::swap( laplacianFilter[2], laplacianFilter[1] );
-    std::swap( laplacianFilter[2], laplacianFilter[0] );
+    swap( laplacianFilter[2], laplacianFilter[1] );
+    swap( laplacianFilter[2], laplacianFilter[0] );
     // Current Sigma refers to the center filter, hence next it'll be
     // the center
     m_CurrentSigma = sigma;
