@@ -79,7 +79,7 @@ bool MaximaGaussianBlobTest( const double sigma )
 }
 
 
-int itkMultiScaleLaplacianBlobDetectorImageFilterTest( int argc, char *argv[] )
+int itkMultiScaleLaplacianBlobDetectorImageFilterTest( int , char *[] )
 {
 
   MaximaGaussianBlobTest<2>( 3 );

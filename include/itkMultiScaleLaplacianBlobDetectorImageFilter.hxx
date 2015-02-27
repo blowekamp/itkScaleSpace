@@ -105,9 +105,12 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
     // simga' = k^i * initial_sigma
     // t = sigma^2
     const double sigma = initial_sigma * vcl_pow( k, double( numberOfScales - i -1 ) );
-    const double t = vnl_math_sqr( initial_sigma * vcl_pow( k, double( numberOfScales - i - 1 ) ) );
 
-    itkDebugMacro( << "i: " << i << " sigma: " << sigma << " t: " << t << " k: " << k );
+#if !defined( NDEBUG )
+    const double iterT = vnl_math_sqr( initial_sigma * vcl_pow( k, double( numberOfScales - i - 1 ) ) );
+#endif
+
+    itkDebugMacro( << "i: " << i << " sigma: " << sigma << " t: " << iterT << " k: " << k );
 
     // update largest index with new largest sigma
     laplacianFilter[2]->SetSigma( sigma );
@@ -189,7 +192,7 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
   this->m_BlobHeapPerThread.clear();
 
   m_BlobList.clear();
-  typename InputImageType::SpacingType spacing = inputImage->GetSpacing();
+  //typename InputImageType::SpacingType spacing = inputImage->GetSpacing();
 
   typename BlobType::PointType zeroPoint;
   zeroPoint.Fill(0);
