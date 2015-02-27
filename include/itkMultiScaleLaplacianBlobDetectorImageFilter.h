@@ -23,8 +23,8 @@
 // ===========================================================================
 //
 
-#ifndef __itkMultiScaleLaplacianBlobDetectorImageFilter_h
-#define __itkMultiScaleLaplacianBlobDetectorImageFilter_h
+#ifndef itkMultiScaleLaplacianBlobDetectorImageFilter_h
+#define itkMultiScaleLaplacianBlobDetectorImageFilter_h
 
 #include "itkImageToImageFilter.h"
 #include "itkGaussianSpatialObject.h"
@@ -246,4 +246,4 @@ private:
 #endif
 
 
-#endif // __itkMultiScaleLaplacianBlobDetectorImageFilter_h
+#endif // itkMultiScaleLaplacianBlobDetectorImageFilter_h
