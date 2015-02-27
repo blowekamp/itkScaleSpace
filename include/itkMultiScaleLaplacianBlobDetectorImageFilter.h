@@ -37,7 +37,8 @@ namespace itk
  *
  * The superclass parameter "Sigma" is the size of the blob if it was
  * a gaussian.
- * \ingroup ITKImageScaleSpace
+ *
+ * \ingroup ITKScaleSpace
  **/
 template < unsigned int TDimension = 3 >
 class ScaleSpaceBlobSpatialObject
@@ -89,7 +90,7 @@ private:
  *
  * \sa LaplacianRecursiveGaussianImageFilter
  *
- * \ingroup ITKImageScaleSpace
+ * \ingroup ITKScaleSpace
  *
  * \author Bradley Lowekamp
 */
