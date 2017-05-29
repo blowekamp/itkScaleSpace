@@ -49,7 +49,7 @@ public:
   typedef double                               ScalarType;
   typedef SmartPointer< Self >                 Pointer;
   typedef SmartPointer< const Self >           ConstPointer;
-  typedef GaussianSpatialObject< TDimension > Superclass;
+  typedef GaussianSpatialObject< TDimension >  Superclass;
   typedef SmartPointer< Superclass >           SuperclassPointer;
   typedef typename Superclass::PointType       PointType;
 
@@ -74,7 +74,6 @@ private:
   double m_ObjectRadius;
 
 };
-
 
 
 /** \class MultiScaleLaplacianBlobDetectorImageFilter

@@ -6,12 +6,12 @@
 namespace
 {
 
-template <unsigned int IDimension>
+template <unsigned int VDimension>
 bool MaximaGaussianBlobTest( const double sigma )
 {
   const unsigned int imageSize = 64;
 
-  typedef itk::Image< float, IDimension > ImageType;
+  typedef itk::Image< float, VDimension > ImageType;
 
   typename ImageType::SizeType size;
   size.Fill( imageSize );
@@ -20,13 +20,12 @@ bool MaximaGaussianBlobTest( const double sigma )
   spacing.Fill( 1.0 );
 
 
-
   typedef itk::GaussianImageSource<ImageType> GaussianSourceType;
   typename GaussianSourceType::Pointer gaussianSource = GaussianSourceType::New();
   gaussianSource->SetSize( size );
   gaussianSource->SetSpacing( spacing );
-  gaussianSource->SetMean( itk::FixedArray< double, IDimension>( imageSize/2 ) );
-  gaussianSource->SetSigma( itk::FixedArray< double, IDimension>( sigma ) );
+  gaussianSource->SetMean( itk::FixedArray< double, VDimension>( imageSize/2 ) );
+  gaussianSource->SetSigma( itk::FixedArray< double, VDimension>( sigma ) );
   gaussianSource->SetNormalized( false );
   gaussianSource->SetScale( -1.0 ); // dark blob
 
