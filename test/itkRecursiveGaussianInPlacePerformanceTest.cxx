@@ -1,4 +1,3 @@
-
 #include "itkRecursiveGaussianImageFilter.h"
 
 #include "itkGaussianImageSource.h"
@@ -25,7 +24,6 @@ int itkRecursiveGaussianInPlacePerformanceTest( int argc, char *argv[] )
   gaussianSource->SetSigma( itk::FixedArray< double, Dimension>( imageSize/6 ) );
   gaussianSource->SetNormalized( false );
   gaussianSource->SetScale( 1.0 );
-
 
 
   for (unsigned int d = 0; d < Dimension; ++d )

@@ -23,8 +23,8 @@
 // ===========================================================================
 //
 
-#ifndef __itkMultiScaleLaplacianBlobDetectorImageFilter_hxx
-#define __itkMultiScaleLaplacianBlobDetectorImageFilter_hxx
+#ifndef itkMultiScaleLaplacianBlobDetectorImageFilter_hxx
+#define itkMultiScaleLaplacianBlobDetectorImageFilter_hxx
 
 #include "itkMultiScaleLaplacianBlobDetectorImageFilter.h"
 #include "itkEllipseSpatialObject.h"
@@ -333,4 +333,4 @@ void MultiScaleLaplacianBlobDetectorImageFilter< TInputImage >
 
 }
 
-#endif // __itkMultiScaleLaplacianBlobDetectorImageFilter_hxx
+#endif // itkMultiScaleLaplacianBlobDetectorImageFilter_hxx
